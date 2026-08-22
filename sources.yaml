@@ -1,0 +1,10 @@
+sources:
+  - repository: cordisx/cordisx
+    ref: main
+    source: .agents/docs
+    mount: cordisx
+
+  - repository: cordisx/cordisx-protocol
+    ref: main
+    source: .agents/docs
+    mount: protocol
