@@ -1,0 +1,236 @@
+.docs-hero {
+  --section-edge: #3a3c42;
+  position: relative;
+  min-height: 360px;
+  display: grid;
+  place-items: center;
+  padding: 48px 24px;
+  border-bottom: 1px solid var(--section-edge);
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.035), transparent 42%),
+    #1b1c20;
+}
+
+.docs-hero-content {
+  width: min(680px, 100%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.docs-mark {
+  width: 90px;
+  height: 90px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 24px;
+  border: 1px solid #383b42;
+  border-radius: 50%;
+  color: #d9dce0;
+  background: #202126;
+}
+
+.docs-kicker,
+.docs-index-heading p {
+  margin: 0;
+  color: #737882;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+}
+
+.docs-hero h1 {
+  margin: 13px 0 0;
+  color: #f0f1f2;
+  font-size: 30px;
+  font-weight: 590;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+}
+
+.docs-hero-content > p:last-child {
+  max-width: 540px;
+  margin: 15px 0 0;
+  color: #8d929b;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.docs-index-section {
+  --section-edge: #303238;
+  position: relative;
+  min-height: 620px;
+  padding: 62px 48px 78px;
+  border-bottom: 1px solid var(--section-edge);
+  background:
+    linear-gradient(rgba(111, 116, 126, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(111, 116, 126, 0.045) 1px, transparent 1px),
+    #18191d;
+  background-size: 40px 40px;
+}
+
+.docs-index-shell {
+  width: min(900px, 100%);
+  margin: 0 auto;
+}
+
+.docs-index-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.docs-index-heading h2 {
+  margin: 8px 0 0;
+  color: #ecedef;
+  font-size: 24px;
+  font-weight: 580;
+  letter-spacing: -0.04em;
+}
+
+.docs-index-heading > span {
+  color: #777c85;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.docs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.docs-card {
+  min-height: 190px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px;
+  border: 1px solid #3d4047;
+  border-radius: 4px;
+  color: inherit;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.022), transparent 45%),
+    #1a1b1f;
+  text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.docs-card:hover,
+.docs-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: #5a5e66;
+  outline: 0;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 45%),
+    #1d1e23;
+}
+
+.docs-card-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #44484f;
+  border-radius: 4px;
+  color: #dfe1e4;
+  background: #23252a;
+}
+
+.docs-card-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.docs-card-copy small {
+  color: #737882;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+.docs-card-copy strong {
+  margin-top: 10px;
+  color: #eceef0;
+  font-size: 15px;
+  font-weight: 590;
+  letter-spacing: -0.025em;
+}
+
+.docs-card-copy > span {
+  margin-top: 10px;
+  color: #858a93;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.docs-card-arrow {
+  margin-top: 2px;
+  color: #858a93;
+}
+
+.source-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid #34373d;
+  color: #9ca1a9;
+  background: rgba(27, 28, 32, 0.86);
+}
+
+.source-note > .reicon-slot {
+  margin-top: 1px;
+}
+
+.source-note strong {
+  color: #dfe1e4;
+  font-size: 11px;
+  font-weight: 570;
+}
+
+.source-note p {
+  margin: 6px 0 0;
+  color: #777c85;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .docs-hero {
+    min-height: 380px;
+    padding-inline: 20px;
+  }
+
+  .docs-hero h1 {
+    font-size: 26px;
+  }
+
+  .docs-index-section {
+    padding: 50px 20px 64px;
+  }
+
+  .docs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .docs-index-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .docs-card {
+    min-height: 178px;
+    padding: 18px;
+  }
+}

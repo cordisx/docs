@@ -1,3 +1,4 @@
 /generated/
 /dist/
 /.cache/
+/node_modules/
