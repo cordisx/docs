@@ -37,6 +37,8 @@ if (
   index.includes('class="source-note"') ||
   !styles.includes('padding: 0') ||
   !styles.includes('gap: 0') ||
+  !styles.includes('.docs-card::before') ||
+  !styles.includes('linear-gradient(135deg, var(--card-corner)') ||
   !styles.includes('.docs-index-shell {\n  width: 100%') ||
   !styles.includes('min-height: calc(100svh - 75px)') ||
   !styles.includes('min-height: calc(100svh - 67px)')

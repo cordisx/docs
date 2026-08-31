@@ -28,6 +28,8 @@
 }
 
 .docs-card {
+  --card-corner: #3d4047;
+  position: relative;
   min-height: 190px;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
@@ -42,6 +44,19 @@
     #1a1b1f;
   text-decoration: none;
   transition: background 160ms ease;
+}
+
+.docs-card::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background:
+    linear-gradient(135deg, var(--card-corner) 0 50%, transparent 51%) top left / 8px 8px no-repeat,
+    linear-gradient(225deg, var(--card-corner) 0 50%, transparent 51%) top right / 8px 8px no-repeat,
+    linear-gradient(45deg, var(--card-corner) 0 50%, transparent 51%) bottom left / 8px 8px no-repeat,
+    linear-gradient(315deg, var(--card-corner) 0 50%, transparent 51%) bottom right / 8px 8px no-repeat;
+  pointer-events: none;
 }
 
 .docs-card:nth-child(odd) {
