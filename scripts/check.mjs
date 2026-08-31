@@ -2,13 +2,14 @@ import { access, readFile } from 'node:fs/promises'
 
 const index = await readFile(new URL('../index.html', import.meta.url), 'utf8')
 const styles = await readFile(new URL('../styles.css', import.meta.url), 'utf8')
+const preferences = await readFile(new URL('../preferences.js', import.meta.url), 'utf8')
 const shell = await readFile(new URL('../site-shell.css', import.meta.url), 'utf8')
 const siteLinks = await readFile(new URL('../site-links.js', import.meta.url), 'utf8')
 const reicons = await readFile(new URL('../reicons.js', import.meta.url), 'utf8')
 const sources = await readFile(new URL('../sources.yaml', import.meta.url), 'utf8')
 
 for (const [file, content, references] of [
-  ['index.html', index, ['./site-shell.css', './styles.css', './site-links.js', './reicons.js', '/marketplace/', 'aria-current="page"', 'class="site-footer"']],
+  ['index.html', index, ['./site-shell.css', './styles.css', './preferences.js', './site-links.js', './reicons.js', '/marketplace/', 'aria-current="page"', 'class="site-footer"', 'id="locale-toggle"', 'id="theme-toggle"']],
   ['site-shell.css', shell, ['width: min(1040px, 100%)', 'height: 76px', '.site-header::before', '.site-footer', 'padding: 72px 24px 34px', 'padding: 56px 18px 30px']],
   ['styles.css', styles, ['.docs-index-section', '.docs-grid', 'grid-template-rows: repeat(2, minmax(0, 1fr))']],
 ]) {
@@ -58,6 +59,12 @@ if (shell.includes('.site-header nav a:not(.github-link)')) {
 }
 if (index.includes('/cordisx/main/packages/cli/assets/brand/')) {
   throw new Error('brand assets must be pinned to an immutable CordisX revision')
+}
+if (!preferences.includes("'cordisx:locale'") || !preferences.includes("'cordisx:theme'")) {
+  throw new Error('documentation display preferences must be persistent')
+}
+if (!styles.includes(':root[data-theme="light"]')) {
+  throw new Error('documentation must provide a light color theme')
 }
 
 for (const icon of [
