@@ -3,11 +3,12 @@ import { access, readFile } from 'node:fs/promises'
 const index = await readFile(new URL('../index.html', import.meta.url), 'utf8')
 const styles = await readFile(new URL('../styles.css', import.meta.url), 'utf8')
 const shell = await readFile(new URL('../site-shell.css', import.meta.url), 'utf8')
+const siteLinks = await readFile(new URL('../site-links.js', import.meta.url), 'utf8')
 const reicons = await readFile(new URL('../reicons.js', import.meta.url), 'utf8')
 const sources = await readFile(new URL('../sources.yaml', import.meta.url), 'utf8')
 
 for (const [file, content, references] of [
-  ['index.html', index, ['./site-shell.css', './styles.css', './reicons.js', '/marketplace/', 'aria-current="page"', 'class="site-footer"']],
+  ['index.html', index, ['./site-shell.css', './styles.css', './site-links.js', './reicons.js', '/marketplace/', 'aria-current="page"', 'class="site-footer"']],
   ['site-shell.css', shell, ['width: min(1040px, 100%)', 'height: 76px', '.site-header::before', '.site-footer', 'padding: 72px 24px 34px', 'padding: 56px 18px 30px']],
   ['styles.css', styles, ['.docs-index-section', '.docs-grid', 'grid-template-rows: repeat(2, minmax(0, 1fr))']],
 ]) {
@@ -46,6 +47,9 @@ if (
   throw new Error('documentation must open directly on the navigation surface')
 }
 if (reicons.includes('unpkg.com')) throw new Error('docs icons must load from the vendored Reicon modules')
+if (!siteLinks.includes("window.location.port === '4175'") || !siteLinks.includes("${homepageOrigin}/#product")) {
+  throw new Error('standalone docs preview must route home links to the homepage preview')
+}
 if (!shell.includes('.site-header nav a[href="/#product"],') || !shell.includes('.site-header nav .github-link')) {
   throw new Error('mobile navigation must preserve the Docs and Marketplace links')
 }

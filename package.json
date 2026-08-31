@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node --check reicons.js && node scripts/check.mjs"
+    "check": "node --check site-links.js && node --check reicons.js && node scripts/check.mjs"
   },
   "engines": {
     "node": ">=22.19"
