@@ -31,7 +31,9 @@ if (
   styles.includes('.docs-hero') ||
   !/<main>\s*<section class="docs-index-section"(?:\s|>)/.test(index) ||
   !index.includes('<h1 id="docs-index-heading">') ||
-  !styles.includes('.docs-index-heading h1')
+  !styles.includes('.docs-index-heading h1') ||
+  !styles.includes('min-height: calc(100svh - 75px)') ||
+  !styles.includes('min-height: calc(100svh - 67px)')
 ) {
   throw new Error('documentation must open directly on the navigation surface')
 }

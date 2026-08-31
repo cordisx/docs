@@ -9,7 +9,8 @@
 .docs-index-section {
   --section-edge: #303238;
   position: relative;
-  min-height: 620px;
+  min-height: calc(100vh - 75px);
+  min-height: calc(100svh - 75px);
   padding: 62px 48px 78px;
   border-bottom: 1px solid var(--section-edge);
   background:
@@ -154,6 +155,8 @@
 
 @media (max-width: 760px) {
   .docs-index-section {
+    min-height: calc(100vh - 67px);
+    min-height: calc(100svh - 67px);
     padding: 50px 20px 64px;
   }
 
