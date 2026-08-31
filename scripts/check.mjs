@@ -9,7 +9,7 @@ const sources = await readFile(new URL('../sources.yaml', import.meta.url), 'utf
 for (const [file, content, references] of [
   ['index.html', index, ['./site-shell.css', './styles.css', './reicons.js', '/marketplace/', 'aria-current="page"', 'class="site-footer"']],
   ['site-shell.css', shell, ['width: min(1040px, 100%)', 'height: 76px', '.site-header::before', '.site-footer', 'padding: 72px 24px 34px', 'padding: 56px 18px 30px']],
-  ['styles.css', styles, ['.docs-index-section', '.docs-grid', '.source-note']],
+  ['styles.css', styles, ['.docs-index-section', '.docs-grid', 'grid-template-rows: repeat(2, minmax(0, 1fr))']],
 ]) {
   for (const reference of references) {
     if (!content.includes(reference)) throw new Error(`${file} is missing ${reference}`)
@@ -26,13 +26,16 @@ for (const source of [
 const repositories = [...sources.matchAll(/^\s*- repository:/gm)]
 if (repositories.length !== 2) throw new Error('sources.yaml must contain exactly two allowed repositories')
 if (/\.agents\/rules|roadmap/i.test(index)) throw new Error('public docs navigation references a forbidden source')
+if ((index.match(/class="docs-card"/g) ?? []).length !== 4) {
+  throw new Error('documentation index must contain exactly four entry cards')
+}
 if (
   index.includes('docs-hero') ||
   styles.includes('.docs-hero') ||
   !/<main>\s*<section class="docs-index-section"(?:\s|>)/.test(index) ||
-  !index.includes('<h1 id="docs-index-heading">') ||
-  !styles.includes('.docs-index-heading h1') ||
-  !styles.includes('padding: 62px 24px 78px') ||
+  index.includes('class="docs-index-heading"') ||
+  index.includes('class="source-note"') ||
+  !styles.includes('padding: 24px') ||
   !styles.includes('.docs-index-shell {\n  width: 100%') ||
   !styles.includes('min-height: calc(100svh - 75px)') ||
   !styles.includes('min-height: calc(100svh - 67px)')
@@ -56,7 +59,6 @@ for (const icon of [
   'BookOpen',
   'Code',
   'Globe',
-  'ShieldCheck',
   'Store',
 ]) {
   await access(new URL(`../assets/reicon/icons/${icon}.js`, import.meta.url))
