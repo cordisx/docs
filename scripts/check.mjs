@@ -63,6 +63,9 @@ if (index.includes('/cordisx/main/packages/cli/assets/brand/')) {
 if (!preferences.includes("'cordisx:locale'") || !preferences.includes("'cordisx:theme'")) {
   throw new Error('documentation display preferences must be persistent')
 }
+if (!preferences.includes('prefers-color-scheme: light')) {
+  throw new Error('documentation must follow the system theme by default')
+}
 if (!styles.includes(':root[data-theme="light"]')) {
   throw new Error('documentation must provide a light color theme')
 }

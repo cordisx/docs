@@ -3,6 +3,7 @@ const themeToggle = document.querySelector('#theme-toggle')
 const themeColor = document.querySelector('meta[name="theme-color"]')
 const STORAGE_LOCALE = 'cordisx:locale'
 const STORAGE_THEME = 'cordisx:theme'
+const systemTheme = matchMedia('(prefers-color-scheme: light)')
 
 const translations = {
   en: {
@@ -15,7 +16,7 @@ const translations = {
     footerDescription: 'CordisX brings plugins into Codex Desktop without replacing your tools, projects, conversations, or agent loop.',
     footerSafety: 'Plugins currently run as trusted renderer code. Sandboxing, signed packages, and enforced permissions are not yet available—review source before enabling an extension.',
     copyright: '© 2026 CordisX. Open source.', preferencesLabel: 'Display preferences', languageName: 'EN', languageAction: 'Switch language to Chinese',
-    dark: 'Dark', light: 'Light', themeAction: 'Switch color theme',
+    system: 'System', dark: 'Dark', light: 'Light', themeAction: 'Switch color theme',
   },
   'zh-CN': {
     product: '产品', docs: '文档', marketplace: '插件市场', protocol: '协议', homeLabel: '返回 CordisX 首页',
@@ -27,12 +28,14 @@ const translations = {
     footerDescription: 'CordisX 将插件带入 Codex Desktop，同时保留你现有的工具、项目、对话和智能体工作流。',
     footerSafety: '插件目前以受信任的渲染器代码运行，暂不提供沙箱、签名包或强制权限控制；启用扩展前请先审查源码。',
     copyright: '© 2026 CordisX。开源项目。', preferencesLabel: '显示偏好', languageName: '中文', languageAction: '切换语言为英文',
-    dark: '深色', light: '浅色', themeAction: '切换颜色主题',
+    system: '跟随系统', dark: '深色', light: '浅色', themeAction: '切换颜色主题',
   },
 }
 
 let locale = storedValue(STORAGE_LOCALE) || ((navigator.language || '').startsWith('zh') ? 'zh-CN' : 'en')
-let theme = storedValue(STORAGE_THEME) === 'light' ? 'light' : 'dark'
+const storedTheme = storedValue(STORAGE_THEME)
+let followsSystemTheme = storedTheme !== 'light' && storedTheme !== 'dark'
+let theme = followsSystemTheme ? (systemTheme.matches ? 'light' : 'dark') : storedTheme
 
 function storedValue(key) {
   try { return localStorage.getItem(key) } catch { return null }
@@ -40,6 +43,10 @@ function storedValue(key) {
 
 function storeValue(key, value) {
   try { localStorage.setItem(key, value) } catch {}
+}
+
+function clearValue(key) {
+  try { localStorage.removeItem(key) } catch {}
 }
 
 function copy(key) {
@@ -58,7 +65,7 @@ function applyLocale() {
 function applyTheme() {
   document.documentElement.dataset.theme = theme
   themeColor.content = theme === 'light' ? '#e7e7e4' : '#1b1c20'
-  themeToggle.querySelector('[data-theme-label]').textContent = copy(theme)
+  themeToggle.querySelector('[data-theme-label]').textContent = followsSystemTheme ? copy('system') : copy(theme)
   themeToggle.setAttribute('aria-label', copy('themeAction'))
   themeToggle.title = copy('themeAction')
 }
@@ -70,8 +77,24 @@ localeToggle.addEventListener('click', () => {
 })
 
 themeToggle.addEventListener('click', () => {
-  theme = theme === 'dark' ? 'light' : 'dark'
-  storeValue(STORAGE_THEME, theme)
+  if (followsSystemTheme) {
+    followsSystemTheme = false
+    theme = 'dark'
+    storeValue(STORAGE_THEME, theme)
+  } else if (theme === 'dark') {
+    theme = 'light'
+    storeValue(STORAGE_THEME, theme)
+  } else {
+    followsSystemTheme = true
+    theme = systemTheme.matches ? 'light' : 'dark'
+    clearValue(STORAGE_THEME)
+  }
+  applyTheme()
+})
+
+systemTheme.addEventListener('change', event => {
+  if (!followsSystemTheme) return
+  theme = event.matches ? 'light' : 'dark'
   applyTheme()
 })
 
