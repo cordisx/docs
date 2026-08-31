@@ -9,7 +9,7 @@ const sources = await readFile(new URL('../sources.yaml', import.meta.url), 'utf
 for (const [file, content, references] of [
   ['index.html', index, ['./site-shell.css', './styles.css', './reicons.js', '/marketplace/', 'aria-current="page"', 'class="site-footer"']],
   ['site-shell.css', shell, ['width: min(1040px, 100%)', 'height: 76px', '.site-header::before', '.site-footer']],
-  ['styles.css', styles, ['min-height: 360px', '.docs-grid', '.source-note']],
+  ['styles.css', styles, ['.docs-index-section', '.docs-grid', '.source-note']],
 ]) {
   for (const reference of references) {
     if (!content.includes(reference)) throw new Error(`${file} is missing ${reference}`)
@@ -26,6 +26,15 @@ for (const source of [
 const repositories = [...sources.matchAll(/^\s*- repository:/gm)]
 if (repositories.length !== 2) throw new Error('sources.yaml must contain exactly two allowed repositories')
 if (/\.agents\/rules|roadmap/i.test(index)) throw new Error('public docs navigation references a forbidden source')
+if (
+  index.includes('docs-hero') ||
+  styles.includes('.docs-hero') ||
+  !/<main>\s*<section class="docs-index-section"(?:\s|>)/.test(index) ||
+  !index.includes('<h1 id="docs-index-heading">') ||
+  !styles.includes('.docs-index-heading h1')
+) {
+  throw new Error('documentation must open directly on the navigation surface')
+}
 if (reicons.includes('unpkg.com')) throw new Error('docs icons must load from the vendored Reicon modules')
 if (!shell.includes('.site-header nav a[href="/#product"],') || !shell.includes('.site-header nav .github-link')) {
   throw new Error('mobile navigation must preserve the Docs and Marketplace links')
