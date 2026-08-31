@@ -35,7 +35,8 @@ if (
   !/<main>\s*<section class="docs-index-section"(?:\s|>)/.test(index) ||
   index.includes('class="docs-index-heading"') ||
   index.includes('class="source-note"') ||
-  !styles.includes('padding: 24px') ||
+  !styles.includes('padding: 0') ||
+  !styles.includes('gap: 0') ||
   !styles.includes('.docs-index-shell {\n  width: 100%') ||
   !styles.includes('min-height: calc(100svh - 75px)') ||
   !styles.includes('min-height: calc(100svh - 67px)')

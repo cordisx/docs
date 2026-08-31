@@ -1,11 +1,11 @@
 .docs-index-section {
   --section-edge: #303238;
-  --docs-content-height: calc(100vh - 75px - 48px);
-  --docs-content-height: calc(100svh - 75px - 48px);
+  --docs-content-height: calc(100vh - 75px);
+  --docs-content-height: calc(100svh - 75px);
   position: relative;
   min-height: calc(100vh - 75px);
   min-height: calc(100svh - 75px);
-  padding: 24px;
+  padding: 0;
   border-bottom: 1px solid var(--section-edge);
   background:
     linear-gradient(rgba(111, 116, 126, 0.045) 1px, transparent 1px),
@@ -24,7 +24,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 0;
 }
 
 .docs-card {
@@ -34,20 +34,26 @@
   align-items: center;
   gap: 16px;
   padding: 22px;
-  border: 1px solid #3d4047;
-  border-radius: 4px;
+  border: 0;
+  border-radius: 0;
   color: inherit;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.022), transparent 45%),
     #1a1b1f;
   text-decoration: none;
-  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+  transition: background 160ms ease;
+}
+
+.docs-card:nth-child(odd) {
+  border-right: 1px solid #3d4047;
+}
+
+.docs-card:nth-child(-n + 2) {
+  border-bottom: 1px solid #3d4047;
 }
 
 .docs-card:hover,
 .docs-card:focus-visible {
-  transform: translateY(-2px);
-  border-color: #5a5e66;
   outline: 0;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 45%),
@@ -103,13 +109,24 @@
     --docs-content-height: auto;
     min-height: calc(100vh - 67px);
     min-height: calc(100svh - 67px);
-    padding: 18px;
+    padding: 0;
   }
 
   .docs-grid {
     min-height: 0;
     grid-template-columns: 1fr;
     grid-template-rows: none;
+  }
+
+  .docs-card,
+  .docs-card:nth-child(odd),
+  .docs-card:nth-child(-n + 2) {
+    border-right: 0;
+    border-bottom: 1px solid #3d4047;
+  }
+
+  .docs-card:last-child {
+    border-bottom: 0;
   }
 }
 
