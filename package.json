@@ -4,9 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node --check preferences.js && node --check site-links.js && node --check reicons.js && node scripts/check.mjs"
+    "check": "node --check preferences.js && node --check site-links.js && node --check reicons.js && node scripts/check.mjs",
+    "format": "dprint fmt",
+    "format:check": "dprint check"
   },
   "engines": {
     "node": ">=22.19"
+  },
+  "devDependencies": {
+    "dprint": "0.57.1"
   }
 }
