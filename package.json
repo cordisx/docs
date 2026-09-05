@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "check": "node --check preferences.js && node --check site-links.js && node --check reicons.js && node scripts/check.mjs",
-    "lint": "eslint .",
     "format": "dprint fmt",
     "format:check": "dprint check"
   },
@@ -13,7 +12,6 @@
     "node": ">=22.19"
   },
   "devDependencies": {
-    "eslint": "9.39.4",
     "dprint": "0.57.1"
   }
 }
