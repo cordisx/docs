@@ -2,12 +2,12 @@
 
 ## Choose the owner
 
-| Material | Authoritative source |
-| --- | --- |
-| Host product usage, implementation architecture, development and validation | [cordisx documentation](https://github.com/cordisx/cordisx/tree/main/.agents/docs) |
-| Versioned plugin contracts and interoperability requirements | [Protocol specifications](https://github.com/cordisx/cordisx-protocol/tree/main/.agents/docs) |
-| Shared public-site design and capture workflows | [Homepage maintenance guides](https://github.com/cordisx/cordisx.github.io/tree/main/.agents/docs) |
-| Portal navigation, source registry, and presentation | This repository |
+| Material                                                                    | Authoritative source                                                                               |
+| --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Host product usage, implementation architecture, development and validation | [cordisx documentation](https://github.com/cordisx/cordisx/tree/main/.agents/docs)                 |
+| Versioned plugin contracts and interoperability requirements                | [Protocol specifications](https://github.com/cordisx/cordisx-protocol/tree/main/.agents/docs)      |
+| Shared public-site design and capture workflows                             | [Homepage maintenance guides](https://github.com/cordisx/cordisx.github.io/tree/main/.agents/docs) |
+| Portal navigation, source registry, and presentation                        | This repository                                                                                    |
 
 Edit the source when a product fact or contract changes. A useful navigation
 summary links there; it does not duplicate the complete reference or become a
