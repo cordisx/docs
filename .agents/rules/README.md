@@ -1,5 +1,10 @@
 # Documentation portal maintenance
 
+- Follow the [organization file-size rule](https://github.com/cordisx/cordisxmono/blob/main/.agents/rules/file-size.md) when adding or expanding files.
+- Preserve the third-party `reicon@1.2.1` files under `assets/reicon/`;
+  its [provenance](../../assets/reicon/README.md) and license travel with the copy.
+  Formatter and linter scopes exclude that directory; maintained `reicons.js`
+  remains checked.
 - Treat `sources.yaml` as an explicit allowlist.
 - Keep navigation links in `index.html` aligned with that registry. The current
   implementation links to source documentation; it has no Markdown aggregation
