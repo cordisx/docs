@@ -23,3 +23,13 @@ If aggregation is implemented, follow
 `.agents/docs` content, exclude private planning and maintenance rules, record
 resolved source commits, normalize links, and keep generated content out of Git.
 These are requirements for that future implementation, not evidence it exists.
+
+## Shared quality configuration
+
+The local dprint and ESLint entry points consume an exact formal
+[Mono quality configuration](https://github.com/cordisx/cordisxmono/blob/c63c2e8c2ba7e11502934a52ad2ce3734e804cdc/.agents/docs/quality-tooling.md).
+The Shared quality configuration CI job checks the installed configuration and
+tracked-file coverage; inspect its report for excluded paths.
+`npm run lint:source` runs the full source policy as a blocking CI step.
+Configuration coverage and full-source lint are separate checks.
+Update the dependency, lock, formatter reference and CI provider SHA together.
