@@ -11,7 +11,7 @@ layer, not another implementation or copy of the Host and plugin manuals.
 3. Use the installed `cordisx` entry when available. It selects standard Docs,
    user-experience Q&A, or Plugin Dev as needed. Reading this portal does not
    require installing Skills; startup manages the Skills bundled by that Host
-   release. [Skill availability](.agents/docs/install-docs-skill.md) covers
+   release. [Skill availability](https://raw.githubusercontent.com/cordisx/docs/main/.agents/docs/install-docs-skill.md) covers
    older releases and optional standalone use.
 
 Resolve relative links against this document's URL. Read only the selected topic
