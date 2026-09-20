@@ -1,44 +1,40 @@
-# Install The CordisX Documentation Skill
+# CordisX Skill Availability
 
-The `cordisx-docs` Skill teaches an assistant where to look when a CordisX task
-arises. Its only installed file is [SKILL.md](../../skills/cordisx-docs/SKILL.md);
-product documentation stays online with its owner. It is not an npm package,
-runtime plugin, or replacement for `cordisx-plugin-development`.
+Describe your task to the `cordisx` entry when available. It selects standard
+documentation, user-experience Q&A, or Plugin Dev without asking you to choose a
+Skill. Product documentation remains online with its owning repository.
 
-## Codex
+## CordisX Startup
 
-Use the user's configured Skill directory. The current documented Codex
-user-level location is `$HOME/.agents/skills/cordisx-docs/SKILL.md`; see
-[Codex Skill locations](https://developers.openai.com/codex/skills/).
-If an older installation already discovers a copy under `$CODEX_HOME/skills`
-or `$HOME/.codex/skills`, update that existing copy instead of creating a second
-Skill with the same name.
-Check whether that Skill already exists before downloading. Reuse an identical
-copy; preserve local edits instead of overwriting them during initial setup.
+The Host manages its bundled Skills during a normal launch into that launch's
+effective home. A release containing the unified bundle provides `cordisx`,
+`cordisx-docs`, `cordisx-qa`, and `cordisx-plugin-development`. Do not add a separate
+Docs Skill download to ordinary installation or startup instructions.
 
-For a new installation:
+The published `0.1.0-beta.13` predates the unified bundle and provisions only
+Plugin Dev. Source changes do not update an already installed CLI. Use the
+documentation matching the installed release; until it includes the bundle,
+the [Docs entry](../../llms.txt) works directly without Skill installation.
+See the Host's [startup Q&A](https://github.com/cordisx/cordisx/blob/main/.agents/docs/startup-qa.md)
+for managed files, existing user content, and home selection.
 
-```bash
-SKILL_DIR="$HOME/.agents/skills/cordisx-docs"
-mkdir -p "$SKILL_DIR"
-curl --fail --location https://raw.githubusercontent.com/cordisx/docs/main/skills/cordisx-docs/SKILL.md --output "$SKILL_DIR/SKILL.md"
-```
+## Optional Standalone Use
 
-Read the downloaded file and verify its `name: cordisx-docs` frontmatter. Use the
-agent's Skill discovery/reload mechanism, or start a new session if necessary,
-and verify it lists `cordisx-docs`. A successful download alone does not prove
-the current session has loaded it. Do not restart the CordisX Host for this step.
+For an assistant outside a CordisX-managed launch, use its documented Skill
+installation mechanism only when persistent installation is requested. The
+canonical [Docs Skill](../../skills/cordisx-docs/SKILL.md) is maintained here;
+`agents/openai.yaml` supplies optional interface metadata. It is not an npm
+package or runtime plugin. Read the file directly for one-off use.
 
-## Other Assistants Or Read-Only Use
+Use the user's existing Skill location and preserve local edits rather than
+creating a duplicate with the same name. In Codex the user location is
+`$HOME/.agents/skills`; see [Skill locations](https://developers.openai.com/codex/skills/).
+Follow the assistant's discovery mechanism to check availability. A file on
+disk does not prove that the current session loaded it. No CordisX restart,
+plugin installation, or permission grant is needed merely to read documentation.
 
-Use the assistant's documented Skill installer/directory for the same standalone
-file. Do not guess another product's configuration path. Without Skill support,
-read [the Docs entry](../../llms.txt) on demand; persistent installation is not
-required to use the guides.
+## Packaging Source
 
-## After Installation
-
-Ask a relevant question, such as "How do I configure a CordisX plugin source?"
-The Skill should select the Marketplace route from [the index](../../skills/index.md),
-not install anything or read all guides. Existing runtime plugins and their
-permissions are unchanged. Remove only this Skill's directory to uninstall it.
+The Host bundles a snapshot from an exact Docs commit rather than downloading
+mutable Skill instructions at startup. This repository owns the canonical
+entry and metadata; the Host owns provisioning and snapshot provenance.

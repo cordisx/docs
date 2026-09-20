@@ -7,8 +7,12 @@ layer, not another implementation or copy of the Host and plugin manuals.
 
 1. For first-time product setup, read [CordisX adoption](https://raw.githubusercontent.com/cordisx/cordisx/main/llms.txt).
    Skip setup already completed in this task.
-2. To make documentation discoverable in future sessions, follow [Install the documentation Skill](.agents/docs/install-docs-skill.md).
-3. For a specific question, choose the smallest relevant entry in [the Skill and documentation index](skills/index.md).
+2. For a specific question, choose the smallest relevant entry in [the Skill and documentation index](skills/index.md).
+3. Use the installed `cordisx` entry when available. It selects standard Docs,
+   user-experience Q&A, or Plugin Dev as needed. Reading this portal does not
+   require installing Skills; startup manages the Skills bundled by that Host
+   release. [Skill availability](.agents/docs/install-docs-skill.md) covers
+   older releases and optional standalone use.
 
 Resolve relative links against this document's URL. Read only the selected topic
 and its required references; do not crawl every linked page or loop back through
@@ -22,3 +26,6 @@ or log into services. Follow the user's request and the target tool's permission
 This public portal does not contain private source addresses or credentials.
 Product commands and compatibility facts belong to their linked owners. Check
 the installed release's help/docs if current `main` differs from that release.
+Keep user-facing requirements separate from repository maintenance conventions.
+Practical experience belongs in Q&A, with its context and applicable limits;
+standard documentation remains authoritative for product behavior.

@@ -5,11 +5,13 @@ Navigation and presentation for `https://cordisx.github.io/docs/`.
 ## Getting started with an AI assistant
 
 ```text
-Read the CordisX documentation entry and install its documentation Skill so you can find the right guide for my CordisX requests: https://raw.githubusercontent.com/cordisx/docs/main/llms.txt
+Use this guide to find the documentation for my CordisX question.
+
+https://raw.githubusercontent.com/cordisx/docs/main/llms.txt
 ```
 
-After installation, describe your CordisX task normally. The Skill loads relevant
-owner documentation on demand. [Read the entry](llms.txt) or browse the
+Describe your question normally. Read only the relevant owner documentation;
+no separate Skill setup is required to use the guides. [Read the entry](llms.txt) or browse the
 [Skill and documentation index](skills/index.md).
 
 ## Portal ownership
