@@ -1,0 +1,24 @@
+# CordisX Documentation
+
+This entry routes agents to CordisX's owning documentation. It is a navigation
+layer, not another implementation or copy of the Host and plugin manuals.
+
+## Reading Order
+
+1. For first-time product setup, read [CordisX adoption](https://raw.githubusercontent.com/cordisx/cordisx/main/llms.txt).
+   Skip setup already completed in this task.
+2. To make documentation discoverable in future sessions, follow [Install the documentation Skill](.agents/docs/install-docs-skill.md).
+3. For a specific question, choose the smallest relevant entry in [the Skill and documentation index](skills/index.md).
+
+Resolve relative links against this document's URL. Read only the selected topic
+and its required references; do not crawl every linked page or loop back through
+completed prerequisites. Read `SKILL.md` directly when persistent installation
+is not wanted or the agent cannot install skills.
+
+## Boundary
+
+Documentation discovery does not install plugins, launch Apps, grant permissions,
+or log into services. Follow the user's request and the target tool's permissions.
+This public portal does not contain private source addresses or credentials.
+Product commands and compatibility facts belong to their linked owners. Check
+the installed release's help/docs if current `main` differs from that release.
